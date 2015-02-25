@@ -56,7 +56,6 @@ module Middleman
 
         [source.to_s, destination.to_s]
       end.compact]
-      p @redirects
     end
   end
 end
