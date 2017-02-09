@@ -3,6 +3,8 @@ require 'pathname'
 
 module Middleman
   module Redirects
+    BLANK_RE = /\A[[:space:]]*\z/
+
     class Extension < Middleman::Extension
       def initialize(app, options_hash={}, &block)
         app.use ::Middleman::Redirects::Middleware
@@ -46,6 +48,8 @@ module Middleman
       @mtime = self.redirects_file_path.mtime
       @redirects = Hash[self.redirects_file_path.each_line.map do |line|
         next if line =~ /^#/ # ignore comments
+        next if line.empty?
+        next if BLANK_RE === line
 
         source, destination = line.split.map { |s| URI.parse(s) }
 
