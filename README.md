@@ -5,10 +5,15 @@ Makes middleman parse `REDIRECTS` files during development and perform the redir
 ```
 # REDIRECTS
 #
-# Syntax:
+# Syntax for "Found" (302) redirects:
 #
 # <source> <destination>
 /github https://github.com/PSPDFKit-labs/middleman-redirects
+
+# Syntax for "Moved Permanently" (301) redirects:
+#
+# <source> <destination> permanent
+/github https://github.com/PSPDFKit-labs/middleman-redirects permanent
 ```
 
 ## Development
